@@ -233,6 +233,16 @@ h1,h2,h3,p{margin-top:0}
   line-height:1.2;
   margin:0 0 7px;
 }
+.toc-item h3 a{
+  color:inherit;
+  text-decoration:none;
+}
+.toc-item h3 a:hover,
+.toc-item h3 a:focus{
+  color:var(--mint);
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
 .toc-item p{
   color:var(--muted);
   font-size:13px;
@@ -914,22 +924,22 @@ h1,h2,h3,p{margin-top:0}
   <section class="slide" data-slide-id="toc" data-rail="03 / Table of contents">
     <div class="content">
       <p class="eyebrow" data-editable-id="toc-kicker">Table of contents</p>
-      <h2 class="title wide" data-editable-id="toc-title">The story from market shift to launch plan.</h2>
+      <h2 class="title wide" data-editable-id="toc-title">From Big Idea to GTM</h2>
       <div class="toc-grid">
-        <article class="toc-item"><span>04</span><h3>Big idea</h3><p>SlideSite as the post-generation editing layer.</p></article>
-        <article class="toc-item"><span>05</span><h3>Problem</h3><p>AI creates decks faster than teams can review them.</p></article>
-        <article class="toc-item"><span>06</span><h3>Landscape</h3><p>No-code apps versus raw developer workflows.</p></article>
-        <article class="toc-item"><span>07</span><h3>Buyer questions</h3><p>The practical blockers after the HTML file exists.</p></article>
-        <article class="toc-item"><span>08</span><h3>Solution</h3><p>The lightweight collaborative editor and export path.</p></article>
-        <article class="toc-item"><span>09</span><h3>Product mockup</h3><p>What team editing looks like in the browser.</p></article>
-        <article class="toc-item"><span>10</span><h3>Build plan</h3><p>Phases from importer MVP to AI object edits.</p></article>
-        <article class="toc-item"><span>11</span><h3>Pricing</h3><p>Workflow pricing against deck tool alternatives.</p></article>
-        <article class="toc-item"><span>12</span><h3>GTM</h3><p>Launch where HTML deck creation is already happening.</p></article>
+        <article class="toc-item"><span>04</span><h3><a href="#big-idea">Big idea</a></h3><p>SlideSite as the post-generation editing layer.</p></article>
+        <article class="toc-item"><span>05</span><h3><a href="#problem-opportunity">Problem</a></h3><p>AI creates decks faster than teams can review them.</p></article>
+        <article class="toc-item"><span>06</span><h3><a href="#solution-landscape">Landscape</a></h3><p>No-code apps versus raw developer workflows.</p></article>
+        <article class="toc-item"><span>07</span><h3><a href="#unanswered-questions">Buyer questions</a></h3><p>The practical blockers after the HTML file exists.</p></article>
+        <article class="toc-item"><span>08</span><h3><a href="#solution">Solution</a></h3><p>The lightweight collaborative editor and export path.</p></article>
+        <article class="toc-item"><span>09</span><h3><a href="#editable-demo">Product mockup</a></h3><p>What team editing looks like in the browser.</p></article>
+        <article class="toc-item"><span>10</span><h3><a href="#timeline">Build plan</a></h3><p>Phases from importer MVP to AI object edits.</p></article>
+        <article class="toc-item"><span>11</span><h3><a href="#pricing">Pricing</a></h3><p>Workflow pricing against deck tool alternatives.</p></article>
+        <article class="toc-item"><span>12</span><h3><a href="#gtm">GTM</a></h3><p>Launch where HTML deck creation is already happening.</p></article>
       </div>
     </div>
   </section>
 
-  <section class="slide" data-slide-id="big-idea" data-rail="04 / Big idea">
+  <section class="slide" id="big-idea" data-slide-id="big-idea" data-rail="04 / Big idea">
     <div class="content split">
       <div>
         <p class="eyebrow" data-editable-id="s1-kicker">Big idea</p>
@@ -946,7 +956,7 @@ h1,h2,h3,p{margin-top:0}
     </div>
   </section>
 
-  <section class="slide" data-slide-id="problem-opportunity" data-rail="05 / Problem + opportunity">
+  <section class="slide" id="problem-opportunity" data-slide-id="problem-opportunity" data-rail="05 / Problem + opportunity">
     <div class="content">
       <p class="eyebrow" data-editable-id="s2-kicker">Problem + opportunity</p>
       <h2 class="title wide" data-editable-id="s2-headline">LLMs generate HTML presentations. Teams still edit by screenshot, Slack, and developer handoff.</h2>
@@ -971,7 +981,7 @@ h1,h2,h3,p{margin-top:0}
     </div>
   </section>
 
-  <section class="slide" data-slide-id="solution-landscape" data-rail="06 / Solution landscape">
+  <section class="slide" id="solution-landscape" data-slide-id="solution-landscape" data-rail="06 / Solution landscape">
     <div class="content">
       <p class="eyebrow" data-editable-id="s3-kicker">Solution landscape</p>
       <h2 class="title wide" data-editable-id="s3-headline">Current tools ask teams to abandon the file they already made.</h2>
@@ -991,7 +1001,7 @@ h1,h2,h3,p{margin-top:0}
     </div>
   </section>
 
-  <section class="slide" data-slide-id="unanswered-questions" data-rail="07 / Buyer questions">
+  <section class="slide" id="unanswered-questions" data-slide-id="unanswered-questions" data-rail="07 / Buyer questions">
     <div class="content">
       <p class="eyebrow" data-editable-id="s4-kicker">Questions current solutions do not answer</p>
       <h2 class="title wide" data-editable-id="s4-headline">The buyer is not asking for another generator. They are asking what happens next.</h2>
@@ -1004,7 +1014,7 @@ h1,h2,h3,p{margin-top:0}
     </div>
   </section>
 
-  <section class="slide" data-slide-id="solution" data-rail="08 / Solution">
+  <section class="slide" id="solution" data-slide-id="solution" data-rail="08 / Solution">
     <div class="content">
       <p class="eyebrow" data-editable-id="s5-kicker">Solution</p>
       <h2 class="title wide" data-editable-id="s5-headline">SlideSite turns HTML decks into lightweight collaborative projects.</h2>
@@ -1019,7 +1029,7 @@ h1,h2,h3,p{margin-top:0}
     </div>
   </section>
 
-  <section class="slide" data-slide-id="editable-demo" data-rail="09 / Product mockup">
+  <section class="slide" id="editable-demo" data-slide-id="editable-demo" data-rail="09 / Product mockup">
     <div class="content split equal">
       <div>
         <p class="eyebrow" data-editable-id="s6-kicker">This deck, inside SlideSite</p>
@@ -1058,7 +1068,7 @@ h1,h2,h3,p{margin-top:0}
     </div>
   </section>
 
-  <section class="slide" data-slide-id="timeline" data-rail="10 / Build plan">
+  <section class="slide" id="timeline" data-slide-id="timeline" data-rail="10 / Build plan">
     <div class="content">
       <p class="eyebrow" data-editable-id="s7-kicker">Build phase and timeline</p>
       <h2 class="title wide" data-editable-id="s7-headline">Launch the useful version first. Add object-level AI once the format is stable.</h2>
@@ -1071,7 +1081,7 @@ h1,h2,h3,p{margin-top:0}
     </div>
   </section>
 
-  <section class="slide" data-slide-id="pricing" data-rail="11 / Pricing">
+  <section class="slide" id="pricing" data-slide-id="pricing" data-rail="11 / Pricing">
     <div class="content">
       <p class="eyebrow" data-editable-id="s8-kicker">Pricing</p>
       <h2 class="title wide" data-editable-id="s8-headline">Price the workflow, not another slide generator.</h2>
@@ -1088,7 +1098,7 @@ h1,h2,h3,p{margin-top:0}
     </div>
   </section>
 
-  <section class="slide" data-slide-id="gtm" data-rail="12 / GTM">
+  <section class="slide" id="gtm" data-slide-id="gtm" data-rail="12 / GTM">
     <div class="content">
       <p class="eyebrow" data-editable-id="s9-kicker">Go to market</p>
       <h2 class="title wide" data-editable-id="s9-headline">Find teams where HTML decks are already happening.</h2>
