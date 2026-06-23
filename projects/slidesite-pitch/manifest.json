@@ -1,0 +1,15 @@
+{
+  "slug": "slidesite-pitch",
+  "name": "SlideSite Pitch",
+  "latestVersion": "v1",
+  "versions": [
+    {
+      "version": "v1",
+      "status": "current",
+      "createdAt": "2026-06-22",
+      "url": "v1/",
+      "latestUrl": "latest/",
+      "sourceFile": "SlideSite pitch HTML deck"
+    }
+  ]
+}
