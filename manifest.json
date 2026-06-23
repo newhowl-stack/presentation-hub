@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-06-22",
+  "name": "Presentation Hub",
+  "projects": [
+    {
+      "slug": "slidesite-pitch",
+      "name": "SlideSite Pitch",
+      "latestVersion": "v1",
+      "latestUrl": "/projects/slidesite-pitch/latest/",
+      "versions": [
+        {
+          "version": "v1",
+          "status": "current",
+          "createdAt": "2026-06-22",
+          "url": "/projects/slidesite-pitch/v1/"
+        }
+      ]
+    }
+  ]
+}

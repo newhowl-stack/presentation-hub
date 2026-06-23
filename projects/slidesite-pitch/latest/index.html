@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SlideSite Pitch Deck v2</title>
+<style>
+:root{
+  --bg:#0b0c0d;
+  --panel:#141618;
+  --panel-2:#1b1e21;
+  --text:#f3efe7;
+  --muted:#a8a096;
+  --faint:#6d675f;
+  --line:rgba(243,239,231,.14);
+  --line-strong:rgba(243,239,231,.24);
+  --mint:#85e0c6;
+  --amber:#f0c36a;
+  --cobalt:#7aa7ff;
+  --clay:#c88363;
+  --danger:#f08a8a;
+  --safe-x:clamp(32px,6vw,84px);
+  --safe-y:clamp(42px,7vh,76px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  overflow:hidden;
+}
+.deck{
+  height:100vh;
+  width:100vw;
+  overflow-y:auto;
+  overflow-x:hidden;
+  scroll-snap-type:y mandatory;
+  scroll-behavior:smooth;
+  background:
+    linear-gradient(90deg,rgba(243,239,231,.035) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(243,239,231,.028) 1px,transparent 1px),
+    radial-gradient(circle at 80% 0%,rgba(133,224,198,.12),transparent 38rem),
+    var(--bg);
+  background-size:72px 72px,72px 72px,auto,auto;
+}
+.deck::-webkit-scrollbar{display:none}
+.slide{
+  min-height:100vh;
+  height:100vh;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  display:flex;
+  align-items:center;
+  padding:var(--safe-y) var(--safe-x);
+  position:relative;
+  overflow:hidden;
+}
+.slide::before{
+  content:attr(data-rail);
+  position:absolute;
+  left:var(--safe-x);
+  top:24px;
+  font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--faint);
+}
+.slide::after{
+  content:"";
+  position:absolute;
+  left:var(--safe-x);
+  right:var(--safe-x);
+  bottom:28px;
+  height:1px;
+  background:linear-gradient(90deg,var(--line-strong),transparent);
+}
+.content{
+  width:min(1180px,100%);
+  margin:0 auto;
+  position:relative;
+  z-index:2;
+}
+.hero-slide{
+  text-align:center;
+  justify-content:center;
+}
+.hero-slide::before{display:none}
+.hero-slide .content{
+  width:min(980px,100%);
+}
+.hero-mark{
+  width:76px;
+  height:76px;
+  border:1px solid var(--line-strong);
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  margin:0 auto 34px;
+  background:
+    linear-gradient(135deg,rgba(133,224,198,.18),rgba(240,195,106,.08)),
+    var(--panel);
+  box-shadow:0 30px 90px rgba(0,0,0,.3);
+}
+.hero-mark svg{width:46px;height:46px}
+.hero-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(68px,10vw,122px);
+  line-height:.92;
+  font-weight:500;
+  letter-spacing:0;
+  margin:0 0 28px;
+}
+.hero-subline{
+  font-size:clamp(24px,3vw,42px);
+  line-height:1.12;
+  font-weight:650;
+  margin:0 auto 28px;
+  max-width:22ch;
+}
+.hero-small{
+  color:var(--muted);
+  font-size:clamp(16px,1.5vw,20px);
+  line-height:1.5;
+  max-width:42ch;
+  margin:0 auto;
+}
+.split{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(320px,.78fr);
+  gap:clamp(36px,6vw,76px);
+  align-items:center;
+}
+.split.equal{grid-template-columns:1fr 1fr}
+.eyebrow{
+  margin:0 0 14px;
+  font:700 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--mint);
+}
+.eyebrow.blue{color:var(--cobalt)}
+h1,h2,h3,p{margin-top:0}
+.headline{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(42px,5.2vw,68px);
+  line-height:1.02;
+  font-weight:500;
+  letter-spacing:0;
+  max-width:14ch;
+  margin-bottom:22px;
+}
+.title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(32px,3.8vw,52px);
+  line-height:1.06;
+  font-weight:500;
+  letter-spacing:0;
+  max-width:18ch;
+  margin-bottom:18px;
+}
+.title.wide{max-width:23ch}
+.dek{
+  font-size:clamp(17px,1.55vw,22px);
+  line-height:1.45;
+  color:var(--text);
+  max-width:58ch;
+  margin-bottom:0;
+}
+.body{
+  font-size:clamp(14px,1.15vw,17px);
+  line-height:1.6;
+  color:var(--muted);
+  max-width:62ch;
+}
+.body strong{color:var(--text);font-weight:650}
+.accent{color:var(--mint)}
+.fine{
+  color:var(--faint);
+  font-size:12px;
+  line-height:1.5;
+}
+.pitch-card{
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:rgba(20,22,24,.82);
+  padding:26px;
+  display:grid;
+  gap:18px;
+}
+.pitch-line{
+  display:grid;
+  grid-template-columns:120px 1fr;
+  gap:18px;
+  align-items:start;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+}
+.pitch-line:last-child{border-bottom:0;padding-bottom:0}
+.pitch-label{
+  color:var(--mint);
+  font:700 11px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+.pitch-line p{
+  margin:0;
+  color:var(--text);
+  font-size:clamp(16px,1.35vw,20px);
+  line-height:1.42;
+}
+.toc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:34px;
+}
+.toc-item{
+  border-top:1px solid var(--line-strong);
+  padding-top:16px;
+  min-height:116px;
+}
+.toc-item span{
+  display:block;
+  color:var(--mint);
+  font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.14em;
+  margin-bottom:22px;
+}
+.toc-item h3{
+  font-size:18px;
+  line-height:1.2;
+  margin:0 0 7px;
+}
+.toc-item p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+  margin:0;
+}
+.rail{
+  border:1px solid var(--line);
+  background:rgba(20,22,24,.82);
+  border-radius:10px;
+  padding:22px;
+  box-shadow:0 24px 80px rgba(0,0,0,.24);
+}
+.source-rail{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+.rail-step{
+  position:relative;
+  border:1px solid var(--line);
+  background:var(--bg);
+  border-radius:8px;
+  padding:16px 16px 16px 54px;
+  min-height:82px;
+}
+.rail-step::before{
+  content:attr(data-num);
+  position:absolute;
+  left:16px;
+  top:17px;
+  width:24px;
+  height:24px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--panel-2);
+  color:var(--mint);
+  font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+.rail-step:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  left:27px;
+  top:45px;
+  bottom:-16px;
+  width:1px;
+  background:var(--line-strong);
+}
+.rail-step h3{
+  font-size:15px;
+  line-height:1.25;
+  margin:0 0 5px;
+}
+.rail-step p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+  margin:0;
+}
+.problem-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:34px;
+}
+.problem{
+  border-top:1px solid var(--line-strong);
+  padding-top:18px;
+}
+.problem .label{
+  font:700 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:var(--amber);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+.problem h3{
+  font-size:22px;
+  line-height:1.15;
+  margin-bottom:10px;
+}
+.problem p{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.5;
+  margin:0;
+}
+.axis-wrap{
+  margin-top:38px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:rgba(20,22,24,.82);
+  padding:26px 26px 24px;
+}
+.axis-labels{
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  color:var(--muted);
+  font:700 11px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.axis{
+  position:relative;
+  height:118px;
+  margin:10px 4px 0;
+}
+.axis-line{
+  position:absolute;
+  left:0;
+  right:0;
+  top:56px;
+  height:2px;
+  background:linear-gradient(90deg,var(--amber),var(--mint),var(--cobalt),var(--clay));
+}
+.vendor{
+  position:absolute;
+  top:35px;
+  transform:translateX(-50%);
+  width:92px;
+  min-height:50px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:7px 8px;
+  font-size:13px;
+  font-weight:700;
+}
+.vendor small{
+  display:block;
+  margin-top:3px;
+  color:var(--faint);
+  font-size:10px;
+  font-weight:600;
+}
+.question-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  margin-top:36px;
+}
+.question{
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:rgba(20,22,24,.78);
+  padding:24px;
+  min-height:150px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.question p{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(24px,2.6vw,36px);
+  line-height:1.12;
+  margin:0;
+}
+.question span{
+  color:var(--muted);
+  font:700 11px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-top:18px;
+}
+.flow{
+  margin-top:34px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:0;
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+  background:rgba(20,22,24,.82);
+}
+.flow-item{
+  min-height:180px;
+  padding:22px 18px;
+  border-right:1px solid var(--line);
+}
+.flow-item:last-child{border-right:0}
+.flow-item .num{
+  color:var(--mint);
+  font:700 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  margin-bottom:36px;
+}
+.flow-item h3{
+  font-size:18px;
+  margin-bottom:8px;
+}
+.flow-item p{
+  font-size:14px;
+  line-height:1.45;
+  color:var(--muted);
+  margin:0;
+}
+.editor{
+  border:1px solid var(--line-strong);
+  border-radius:12px;
+  background:var(--panel);
+  overflow:hidden;
+  box-shadow:0 30px 90px rgba(0,0,0,.34);
+}
+.editor-top{
+  height:48px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 14px;
+}
+.lights{display:flex;gap:6px}
+.lights span{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--faint);
+}
+.avatars{display:flex;align-items:center}
+.avatar{
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--panel-2);
+  border:1px solid var(--line-strong);
+  color:var(--text);
+  font:700 10px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  margin-left:-5px;
+}
+.avatar.live{background:var(--mint);color:#07100d;border-color:var(--mint)}
+.editor-body{
+  display:grid;
+  grid-template-columns:92px minmax(0,1fr) 190px;
+  min-height:420px;
+}
+.thumbs{
+  border-right:1px solid var(--line);
+  padding:12px;
+  display:grid;
+  gap:10px;
+  align-content:start;
+}
+.thumb{
+  aspect-ratio:16/10;
+  border:1px solid var(--line);
+  border-radius:5px;
+  background:#0f1011;
+  padding:7px;
+}
+.thumb.active{border-color:var(--mint)}
+.thumb i{
+  display:block;
+  height:5px;
+  border-radius:99px;
+  margin-bottom:5px;
+  background:var(--faint);
+}
+.thumb i:first-child{width:72%;background:var(--mint)}
+.thumb i:nth-child(2){width:48%}
+.thumb i:nth-child(3){width:60%}
+.canvas{
+  display:grid;
+  place-items:center;
+  padding:24px;
+  background:
+    linear-gradient(90deg,rgba(243,239,231,.028) 1px,transparent 1px),
+    linear-gradient(0deg,rgba(243,239,231,.028) 1px,transparent 1px),
+    #0d0e0f;
+  background-size:22px 22px;
+}
+.mock-slide{
+  position:relative;
+  width:min(100%,560px);
+  aspect-ratio:16/9;
+  border:1px solid var(--line-strong);
+  border-radius:8px;
+  background:#f3efe7;
+  color:#101112;
+  padding:30px;
+}
+.mock-slide h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(24px,3vw,34px);
+  line-height:1.05;
+  width:48%;
+  margin:0 0 12px;
+}
+.mock-slide p{
+  width:46%;
+  color:#55504b;
+  font-size:12px;
+  line-height:1.45;
+  margin:0;
+}
+.mock-figure{
+  position:absolute;
+  right:28px;
+  top:30px;
+  bottom:30px;
+  width:38%;
+  border:1px solid rgba(16,17,18,.22);
+  border-radius:6px;
+  padding:16px;
+}
+.mock-figure span{
+  display:block;
+  height:10px;
+  background:#101112;
+  margin-bottom:10px;
+  border-radius:2px;
+}
+.mock-figure span:nth-child(2){width:70%;background:#85bfae}
+.mock-figure span:nth-child(3){width:52%;background:#c88363}
+.select-box{
+  position:absolute;
+  left:26px;
+  top:26px;
+  width:47%;
+  height:92px;
+  border:2px solid #0e987b;
+  border-radius:5px;
+}
+.select-box::before{
+  content:"headline selected";
+  position:absolute;
+  left:0;
+  top:-25px;
+  background:#0e987b;
+  color:white;
+  border-radius:4px;
+  padding:5px 7px;
+  font:700 10px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.inspector{
+  border-left:1px solid var(--line);
+  padding:14px;
+}
+.inspector h4{
+  margin:0 0 10px;
+  color:var(--mint);
+  font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.field{
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:10px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.4;
+  margin-bottom:10px;
+}
+.chat{
+  margin-top:16px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+}
+.bubble{
+  font-size:12px;
+  line-height:1.4;
+  color:var(--muted);
+  border:1px solid var(--line);
+  border-radius:7px;
+  padding:9px;
+  margin-bottom:8px;
+  background:#0f1011;
+}
+.bubble b{color:var(--text)}
+.timeline{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-top:36px;
+}
+.phase{
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:rgba(20,22,24,.82);
+  padding:22px;
+  min-height:220px;
+}
+.phase .time{
+  color:var(--amber);
+  font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.phase h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:25px;
+  font-weight:500;
+  line-height:1.1;
+  margin:28px 0 14px;
+}
+.phase ul{
+  margin:0;
+  padding-left:18px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6;
+}
+.price-table{
+  margin-top:30px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+  background:rgba(20,22,24,.82);
+}
+.price-row{
+  display:grid;
+  grid-template-columns:1.1fr .8fr 1.6fr;
+  border-bottom:1px solid var(--line);
+}
+.price-row:last-child{border-bottom:0}
+.price-row > div{
+  padding:15px 18px;
+  border-right:1px solid var(--line);
+  font-size:14px;
+  line-height:1.45;
+  color:var(--muted);
+}
+.price-row > div:last-child{border-right:0}
+.price-row.head > div{
+  color:var(--mint);
+  font:700 11px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.price-row b{color:var(--text)}
+.price-row.highlight{background:rgba(133,224,198,.07)}
+.gtm{
+  display:grid;
+  grid-template-columns:1fr .9fr;
+  gap:46px;
+  align-items:start;
+  margin-top:34px;
+}
+.channels{
+  display:grid;
+  gap:14px;
+}
+.channel{
+  display:grid;
+  grid-template-columns:34px 1fr;
+  gap:14px;
+  align-items:start;
+  border-top:1px solid var(--line);
+  padding-top:16px;
+}
+.channel .dot{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:var(--panel-2);
+  border:1px solid var(--line-strong);
+  position:relative;
+}
+.channel .dot::after{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border-radius:50%;
+  background:var(--mint);
+}
+.channel h3{
+  font-size:18px;
+  margin:0 0 5px;
+}
+.channel p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
+}
+.meter{
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:rgba(20,22,24,.82);
+  padding:22px;
+}
+.meter h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:30px;
+  font-weight:500;
+  line-height:1.1;
+  margin-bottom:22px;
+}
+.meter-row{
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:16px;
+  align-items:center;
+  margin:14px 0;
+}
+.meter-row span{
+  color:var(--muted);
+  font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.bar{
+  height:9px;
+  background:#0d0e0f;
+  border:1px solid var(--line);
+  border-radius:999px;
+  overflow:hidden;
+}
+.bar i{
+  display:block;
+  height:100%;
+  width:var(--w);
+  background:var(--mint);
+}
+.progress{
+  position:fixed;
+  top:0;
+  left:0;
+  height:3px;
+  width:0;
+  background:linear-gradient(90deg,var(--mint),var(--amber),var(--clay));
+  z-index:40;
+}
+.counter{
+  position:fixed;
+  top:18px;
+  right:22px;
+  z-index:42;
+  border:1px solid var(--line);
+  border-radius:7px;
+  background:rgba(11,12,13,.72);
+  color:var(--muted);
+  padding:7px 9px;
+  font:700 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.12em;
+  backdrop-filter:blur(8px);
+}
+.counter b{color:var(--text)}
+.dots{
+  position:fixed;
+  right:24px;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:42;
+}
+.dots button{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  border:1px solid var(--line-strong);
+  background:transparent;
+  padding:0;
+  cursor:pointer;
+}
+.dots button.active{
+  background:var(--mint);
+  border-color:var(--mint);
+}
+.nav{
+  position:fixed;
+  left:50%;
+  bottom:20px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  z-index:42;
+}
+.nav button{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:rgba(20,22,24,.78);
+  color:var(--text);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+}
+.nav button:disabled{opacity:.35;cursor:default}
+@media(max-width:980px){
+  body{overflow:auto}
+  .slide{height:auto;min-height:100vh;padding:72px 26px}
+  .split,.split.equal,.gtm{grid-template-columns:1fr}
+  .problem-grid,.timeline,.toc-grid{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr}
+  .flow-item{border-right:0;border-bottom:1px solid var(--line);min-height:auto}
+  .flow-item:last-child{border-bottom:0}
+  .question-grid{grid-template-columns:1fr}
+  .editor-body{grid-template-columns:78px 1fr}
+  .inspector{display:none}
+  .dots{display:none}
+}
+@media(max-width:680px){
+  .hero-title{font-size:56px}
+  .hero-subline{font-size:24px}
+  .headline{font-size:40px}
+  .title{font-size:32px}
+  .pitch-line{grid-template-columns:1fr}
+  .axis{height:310px}
+  .axis-line{left:50%;right:auto;top:0;bottom:0;width:2px;height:auto}
+  .vendor{left:50%!important;top:var(--y);transform:translate(-50%,-50%)}
+  .vendor:nth-child(1){--y:10%}
+  .vendor:nth-child(2){--y:25%}
+  .vendor:nth-child(3){--y:40%}
+  .vendor:nth-child(4){--y:55%}
+  .vendor:nth-child(5){--y:70%}
+  .vendor:nth-child(6){--y:85%}
+  .price-row{grid-template-columns:1fr}
+  .price-row > div{border-right:0;border-bottom:1px solid var(--line)}
+  .price-row > div:last-child{border-bottom:0}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="counter"><b id="now">01</b> / <span id="total">12</span></div>
+<div class="dots" id="dots"></div>
+<div class="nav">
+  <button id="prev" aria-label="Previous slide">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 15 6-6 6 6"/></svg>
+  </button>
+  <button id="next" aria-label="Next slide">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+  </button>
+</div>
+
+<main class="deck" id="deck">
+  <section class="slide hero-slide" data-slide-id="title" data-rail="01 / Title">
+    <div class="content">
+      <div class="hero-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none">
+          <rect x="10" y="13" width="31" height="22" rx="5" stroke="#85e0c6" stroke-width="3"/>
+          <rect x="23" y="29" width="31" height="22" rx="5" stroke="#f0c36a" stroke-width="3"/>
+          <path d="M18 23h15M31 39h15" stroke="#f3efe7" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h1 class="hero-title" data-editable-id="title-headline">SlideSite.</h1>
+      <p class="hero-subline" data-editable-id="title-subline">Generate in Claude. Edit Like A Team.</p>
+      <p class="hero-small" data-editable-id="title-small">Making HTML documents as easy to edit as PowerPoint.</p>
+    </div>
+  </section>
+
+  <section class="slide" data-slide-id="elevator-pitch" data-rail="02 / Elevator pitch">
+    <div class="content split">
+      <div>
+        <p class="eyebrow blue" data-editable-id="elevator-kicker">ELEVATOR PITCH</p>
+        <h2 class="title wide" data-editable-id="elevator-title">Teams output AI decks, but then cannot easily share or edit them as a team.</h2>
+      </div>
+      <aside class="pitch-card" aria-label="Elevator pitch detail">
+        <div class="pitch-line">
+          <div class="pitch-label">Current tools</div>
+          <p data-editable-id="elevator-current-tools">Expensive, all-in-one, overpriced SaaS overkill for a team that already has the HTML deck.</p>
+        </div>
+        <div class="pitch-line">
+          <div class="pitch-label">Solution</div>
+          <p data-editable-id="elevator-solution">A super-lightweight workspace where users log in with GitHub, edit together, and output easily.</p>
+        </div>
+        <div class="pitch-line">
+          <div class="pitch-label">Wedge</div>
+          <p data-editable-id="elevator-wedge">Do not replace Claude, OpenAI, GitHub, or Vercel. Make their deck output usable by a team.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="slide" data-slide-id="toc" data-rail="03 / Table of contents">
+    <div class="content">
+      <p class="eyebrow" data-editable-id="toc-kicker">Table of contents</p>
+      <h2 class="title wide" data-editable-id="toc-title">The story from market shift to launch plan.</h2>
+      <div class="toc-grid">
+        <article class="toc-item"><span>04</span><h3>Big idea</h3><p>SlideSite as the post-generation editing layer.</p></article>
+        <article class="toc-item"><span>05</span><h3>Problem</h3><p>AI creates decks faster than teams can review them.</p></article>
+        <article class="toc-item"><span>06</span><h3>Landscape</h3><p>No-code apps versus raw developer workflows.</p></article>
+        <article class="toc-item"><span>07</span><h3>Buyer questions</h3><p>The practical blockers after the HTML file exists.</p></article>
+        <article class="toc-item"><span>08</span><h3>Solution</h3><p>The lightweight collaborative editor and export path.</p></article>
+        <article class="toc-item"><span>09</span><h3>Product mockup</h3><p>What team editing looks like in the browser.</p></article>
+        <article class="toc-item"><span>10</span><h3>Build plan</h3><p>Phases from importer MVP to AI object edits.</p></article>
+        <article class="toc-item"><span>11</span><h3>Pricing</h3><p>Workflow pricing against deck tool alternatives.</p></article>
+        <article class="toc-item"><span>12</span><h3>GTM</h3><p>Launch where HTML deck creation is already happening.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide-id="big-idea" data-rail="04 / Big idea">
+    <div class="content split">
+      <div>
+        <p class="eyebrow" data-editable-id="s1-kicker">Big idea</p>
+        <h1 class="headline" data-editable-id="s1-headline">SlideSite is the editing layer for AI-made HTML decks.</h1>
+        <p class="dek" data-editable-id="s1-dek">Creators keep using Claude, OpenAI, Cursor, GitHub, and Vercel. Teams get the missing workspace after the deck exists.</p>
+      </div>
+      <aside class="rail" aria-label="SlideSite workflow">
+        <div class="source-rail">
+          <div class="rail-step" data-num="1"><h3>Generate</h3><p>HTML deck is created by the user's preferred AI workflow.</p></div>
+          <div class="rail-step" data-num="2"><h3>Edit together</h3><p>SlideSite adds thumbnails, reorder, WYSIWYG text, chat, and review.</p></div>
+          <div class="rail-step" data-num="3"><h3>Ship</h3><p>Export PDF/PPT, present full-screen, and keep changes in GitHub.</p></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="slide" data-slide-id="problem-opportunity" data-rail="05 / Problem + opportunity">
+    <div class="content">
+      <p class="eyebrow" data-editable-id="s2-kicker">Problem + opportunity</p>
+      <h2 class="title wide" data-editable-id="s2-headline">LLMs generate HTML presentations. Teams still edit by screenshot, Slack, and developer handoff.</h2>
+      <p class="dek" data-editable-id="s2-dek">The creation layer moved fast. The collaboration layer did not.</p>
+      <div class="problem-grid">
+        <article class="problem">
+          <div class="label">Creation</div>
+          <h3 data-editable-id="s2-card1-title">The output looks finished.</h3>
+          <p data-editable-id="s2-card1-body">Claude or OpenAI can produce a polished scroll deck in minutes.</p>
+        </article>
+        <article class="problem">
+          <div class="label">Editing</div>
+          <h3 data-editable-id="s2-card2-title">The workflow is brittle.</h3>
+          <p data-editable-id="s2-card2-body">Non-technical reviewers cannot click text, move slides, or adjust a specific object.</p>
+        </article>
+        <article class="problem">
+          <div class="label">Handoff</div>
+          <h3 data-editable-id="s2-card3-title">The team still needs deck mechanics.</h3>
+          <p data-editable-id="s2-card3-body">They need version history, comments, exports, and presentation mode.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide-id="solution-landscape" data-rail="06 / Solution landscape">
+    <div class="content">
+      <p class="eyebrow" data-editable-id="s3-kicker">Solution landscape</p>
+      <h2 class="title wide" data-editable-id="s3-headline">Current tools ask teams to abandon the file they already made.</h2>
+      <p class="body" data-editable-id="s3-body">No-code presentation apps are polished, but they want the team to start inside their platform. Developer tools preserve HTML, but they expose the team to code. SlideSite sits between those worlds.</p>
+      <div class="axis-wrap">
+        <div class="axis-labels"><span>Start over in a no-code deck app</span><span>Edit the raw HTML repo</span></div>
+        <div class="axis">
+          <div class="axis-line"></div>
+          <div class="vendor" style="left:4%">Beautiful.ai<small>no-code</small></div>
+          <div class="vendor" style="left:21%">Canva<small>canvas</small></div>
+          <div class="vendor" style="left:40%">Pitch<small>workspace</small></div>
+          <div class="vendor" style="left:62%">Marp<small>markdown</small></div>
+          <div class="vendor" style="left:80%">Slidev<small>code</small></div>
+          <div class="vendor" style="left:96%">GitHub<small>raw HTML</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide-id="unanswered-questions" data-rail="07 / Buyer questions">
+    <div class="content">
+      <p class="eyebrow" data-editable-id="s4-kicker">Questions current solutions do not answer</p>
+      <h2 class="title wide" data-editable-id="s4-headline">The buyer is not asking for another generator. They are asking what happens next.</h2>
+      <div class="question-grid">
+        <article class="question"><p data-editable-id="s4-q1">"But how do I edit it?"</p><span>After the AI ships the HTML</span></article>
+        <article class="question"><p data-editable-id="s4-q2">"Can I convert to PPT?"</p><span>When clients ask for the old format</span></article>
+        <article class="question"><p data-editable-id="s4-q3">"How do I share it?"</p><span>With reviewers and stakeholders</span></article>
+        <article class="question"><p data-editable-id="s4-q4">"$50 a month?"</p><span>When they only need post-generation editing</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide-id="solution" data-rail="08 / Solution">
+    <div class="content">
+      <p class="eyebrow" data-editable-id="s5-kicker">Solution</p>
+      <h2 class="title wide" data-editable-id="s5-headline">SlideSite turns HTML decks into lightweight collaborative projects.</h2>
+      <p class="dek" data-editable-id="s5-dek">It does not replace the tools that generate decks. It makes their output editable, reviewable, exportable, and safe to hand to a team.</p>
+      <div class="flow">
+        <article class="flow-item"><div class="num">01</div><h3>Import</h3><p>Paste a URL or connect a GitHub file.</p></article>
+        <article class="flow-item"><div class="num">02</div><h3>Structure</h3><p>Detect slides and add stable editable hooks.</p></article>
+        <article class="flow-item"><div class="num">03</div><h3>Edit</h3><p>Click text, reorder pages, prompt selected objects.</p></article>
+        <article class="flow-item"><div class="num">04</div><h3>Collaborate</h3><p>Team presence, live chat, comments, history.</p></article>
+        <article class="flow-item"><div class="num">05</div><h3>Export</h3><p>Present, print, export PDF, and generate PPT.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide-id="editable-demo" data-rail="09 / Product mockup">
+    <div class="content split equal">
+      <div>
+        <p class="eyebrow" data-editable-id="s6-kicker">This deck, inside SlideSite</p>
+        <h2 class="title" data-editable-id="s6-headline">Editable by ten team members without opening code.</h2>
+        <p class="body" data-editable-id="s6-body"><strong>The promise is narrow on purpose:</strong> keep the deck as HTML, but make the review surface feel familiar. Thumbnails, click-to-edit text, selected-object prompts, chat, exports, and GitHub-backed history.</p>
+      </div>
+      <div class="editor" aria-label="SlideSite editor mockup">
+        <div class="editor-top">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <div class="avatars">
+            <span class="avatar live">TS</span><span class="avatar">AL</span><span class="avatar">JD</span><span class="avatar">MK</span><span class="avatar">RN</span><span class="avatar">VP</span><span class="avatar">KC</span><span class="avatar">LM</span><span class="avatar">NO</span><span class="avatar">+1</span>
+          </div>
+        </div>
+        <div class="editor-body">
+          <div class="thumbs"><div class="thumb"><i></i><i></i><i></i></div><div class="thumb active"><i></i><i></i><i></i></div><div class="thumb"><i></i><i></i><i></i></div><div class="thumb"><i></i><i></i><i></i></div></div>
+          <div class="canvas">
+            <div class="mock-slide">
+              <h3>SlideSite edits the deck after AI makes it.</h3>
+              <p>Point, click, rewrite, export, and keep every change tracked.</p>
+              <div class="mock-figure"><span></span><span></span><span></span></div>
+              <div class="select-box"></div>
+            </div>
+          </div>
+          <aside class="inspector">
+            <h4>Selected element</h4>
+            <div class="field">data-editable-id: headline</div>
+            <div class="field">Prompt: make this more concise.</div>
+            <div class="chat">
+              <h4>Live chat</h4>
+              <div class="bubble"><b>AL</b> Swap slides 3 and 4?</div>
+              <div class="bubble"><b>TS</b> Done. Preview branch is live.</div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide-id="timeline" data-rail="10 / Build plan">
+    <div class="content">
+      <p class="eyebrow" data-editable-id="s7-kicker">Build phase and timeline</p>
+      <h2 class="title wide" data-editable-id="s7-headline">Launch the useful version first. Add object-level AI once the format is stable.</h2>
+      <div class="timeline">
+        <article class="phase"><span class="time">Weeks 1-2</span><h3>Importer MVP</h3><ul><li>GitHub login</li><li>Load HTML deck</li><li>Detect slides</li><li>Create thumbnails</li></ul></article>
+        <article class="phase"><span class="time">Weeks 3-5</span><h3>Team editor</h3><ul><li>Drag reorder</li><li>WYSIWYG text</li><li>Version history</li><li>PDF export</li></ul></article>
+        <article class="phase"><span class="time">Weeks 6-8</span><h3>Collaboration</h3><ul><li>Presence icons</li><li>Live chat</li><li>Comments</li><li>Presentation mode</li></ul></article>
+        <article class="phase"><span class="time">Weeks 9-12</span><h3>AI editing</h3><ul><li>BYOK OpenAI/Claude</li><li>Selected-object prompts</li><li>Compatibility repair</li><li>PPT export beta</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide-id="pricing" data-rail="11 / Pricing">
+    <div class="content">
+      <p class="eyebrow" data-editable-id="s8-kicker">Pricing</p>
+      <h2 class="title wide" data-editable-id="s8-headline">Price the workflow, not another slide generator.</h2>
+      <p class="body" data-editable-id="s8-body">SlideSite should feel cheaper than switching platforms and more useful than asking a developer to edit HTML.</p>
+      <div class="price-table">
+        <div class="price-row head"><div>Product</div><div>Anchor</div><div>What the buyer pays for</div></div>
+        <div class="price-row"><div><b>Pitch Team</b></div><div>$18 / seat / month</div><div>Full presentation workspace with collaboration.</div></div>
+        <div class="price-row"><div><b>Beautiful.ai Team</b></div><div>$50 / user / month</div><div>AI-assisted creation inside a new platform.</div></div>
+        <div class="price-row highlight"><div><b>SlideSite Team</b></div><div>$29 / editor / month</div><div>Edit existing AI-generated HTML decks. Viewers free.</div></div>
+        <div class="price-row highlight"><div><b>SlideSite Business</b></div><div>$49 / editor / month</div><div>BYOK, object-level AI edits, approvals, export controls.</div></div>
+        <div class="price-row"><div><b>Custom internal build</b></div><div>$20k+ project</div><div>One-off tooling with slower iteration and maintenance burden.</div></div>
+      </div>
+      <p class="fine">Suggested pilot: $500/month flat for design partners.</p>
+    </div>
+  </section>
+
+  <section class="slide" data-slide-id="gtm" data-rail="12 / GTM">
+    <div class="content">
+      <p class="eyebrow" data-editable-id="s9-kicker">Go to market</p>
+      <h2 class="title wide" data-editable-id="s9-headline">Find teams where HTML decks are already happening.</h2>
+      <div class="gtm">
+        <div class="channels">
+          <article class="channel"><div class="dot"></div><div><h3>Social influencers</h3><p>Demo the before and after: an AI-made HTML deck becomes editable in SlideSite.</p></div></article>
+          <article class="channel"><div class="dot"></div><div><h3>Forums and builder communities</h3><p>Launch where people already discuss Claude artifacts, Cursor, v0, GitHub, and Vercel workflows.</p></div></article>
+          <article class="channel"><div class="dot"></div><div><h3>AppSumo</h3><p>Use a lifetime deal to recruit early teams, stress-test imports, and collect proof.</p></div></article>
+        </div>
+        <aside class="meter">
+          <h3>Launch wedge</h3>
+          <p class="body">Paste your AI-generated HTML deck. Edit it like slides. Keep it on GitHub.</p>
+          <div class="meter-row"><span>Pain</span><div class="bar"><i style="--w:88%"></i></div></div>
+          <div class="meter-row"><span>Urgency</span><div class="bar"><i style="--w:72%"></i></div></div>
+          <div class="meter-row"><span>Switching</span><div class="bar"><i style="--w:28%"></i></div></div>
+          <div class="meter-row"><span>Shareability</span><div class="bar"><i style="--w:94%"></i></div></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  var deck=document.getElementById('deck');
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots');
+  var now=document.getElementById('now');
+  var total=document.getElementById('total');
+  var progress=document.getElementById('progress');
+  var prev=document.getElementById('prev');
+  var next=document.getElementById('next');
+  var current=0;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function pad(n){return n<10?'0'+n:String(n)}
+  total.textContent=pad(slides.length);
+  function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({behavior:reduce?'auto':'smooth'});}
+  function set(i){
+    current=i;
+    now.textContent=pad(i+1);
+    [].slice.call(dots.children).forEach(function(d,di){d.classList.toggle('active',di===i)});
+    prev.disabled=i===0;
+    next.disabled=i===slides.length-1;
+  }
+  slides.forEach(function(_,i){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label','Go to slide '+(i+1));
+    b.addEventListener('click',function(){go(i)});
+    dots.appendChild(b);
+  });
+  function onScroll(){
+    var max=deck.scrollHeight-deck.clientHeight;
+    progress.style.width=(max>0?deck.scrollTop/max*100:0)+'%';
+    var i=Math.round(deck.scrollTop/deck.clientHeight);
+    if(i!==current)set(i);
+  }
+  deck.addEventListener('scroll',onScroll,{passive:true});
+  prev.addEventListener('click',function(){go(current-1)});
+  next.addEventListener('click',function(){go(current+1)});
+  document.addEventListener('keydown',function(e){
+    if(['ArrowDown','ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(current+1)}
+    if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(current-1)}
+    if(e.key==='Home'){e.preventDefault();go(0)}
+    if(e.key==='End'){e.preventDefault();go(slides.length-1)}
+  });
+  set(0);
+  onScroll();
+})();
+</script>
+</body>
+</html>
