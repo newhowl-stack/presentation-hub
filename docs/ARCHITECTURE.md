@@ -30,9 +30,9 @@ This is a static site. There is no application server, database, login system, o
 
 ## URL Pattern
 
-- Hub: `/`
-- Project latest: `/projects/{project-slug}/latest/`
-- Project version: `/projects/{project-slug}/v1/`
+- Hub: `./`
+- Project latest: `projects/{project-slug}/latest/`
+- Project version: `projects/{project-slug}/v1/`
 
 ## Versioning Rules
 

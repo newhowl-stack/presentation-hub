@@ -7,8 +7,8 @@
       "version": "v1",
       "status": "current",
       "createdAt": "2026-06-22",
-      "url": "/projects/slidesite-pitch/v1/",
-      "latestUrl": "/projects/slidesite-pitch/latest/",
+      "url": "v1/",
+      "latestUrl": "latest/",
       "sourceFile": "SlideSite pitch HTML deck"
     }
   ]
